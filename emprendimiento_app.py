@@ -1,11 +1,23 @@
 # streamlit_water_quality_app.py
-# Streamlit app para evaluar calidad de agua
+# Streamlit app para evaluar calidad de agua con estética corporativa Aquasens
 
 import streamlit as st
 import numpy as np
 from datetime import datetime
 
-st.set_page_config(page_title="Comprobador de calidad de agua", layout="centered")
+st.set_page_config(page_title="AqueSense - Calidad de Agua", layout="centered")
+
+# --- Encabezado corporativo ---
+st.markdown(
+    """
+    <div style='text-align: center; padding: 20px; background: linear-gradient(90deg, #0077b6, #00b4d8);
+                color: white; border-radius: 15px; margin-bottom: 30px;'>
+        <h1 style='margin: 0; font-size: 48px;'>💧 Aquasens</h1>
+        <p style='margin: 0; font-size: 20px;'>Monitoreo inteligente de la calidad del agua</p>
+    </div>
+    """ ,
+    unsafe_allow_html=True
+)
 
 st.title("Comprobador de calidad de agua")
 st.markdown(
@@ -73,13 +85,21 @@ else:
     decision = 'NO APTA'
     decision_text = 'El agua NO es apta sin tratamiento adicional.'
 
-st.markdown("### Resultado")
-if decision == 'APTA':
-    st.success(f"{decision} — {decision_text}")
-elif decision == 'APTA CON PRECAUCIÓN':
-    st.warning(f"{decision} — {decision_text}")
-else:
-    st.error(f"{decision} — {decision_text}")
+# --- Anuncio grande centrado con icono ---
+icon = "✔️" if decision=="APTA" else "⚠️" if decision=="APTA CON PRECAUCIÓN" else "❌"
+
+st.markdown("---")
+st.markdown(
+    f"""
+    <div style='text-align: center; padding: 40px; border-radius: 20px;
+                background-color: {"#d4edda" if decision=="APTA" else "#fff3cd" if decision=="APTA CON PRECAUCIÓN" else "#f8d7da"};
+                color: {"#155724" if decision=="APTA" else "#856404" if decision=="APTA CON PRECAUCIÓN" else "#721c24"};
+                font-size: 40px; font-weight: bold; margin-top:20px; margin-bottom:20px;'>
+        {icon} {decision}<br><span style='font-size:22px; font-weight:normal;'>{decision_text}</span>
+    </div>
+    """ ,
+    unsafe_allow_html=True
+)
 
 st.markdown("---")
 st.subheader("Detalles por parámetro")
@@ -89,7 +109,7 @@ for k,v in assessments.items():
 st.markdown("---")
 st.write(f"Índice simple de calidad (0-100): **{wqi:.1f}**")
 
-report = f"""Informe de calidad de agua
+report = f"""Informe de calidad de agua - Aquasens
 Fecha: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
 Lecturas:
