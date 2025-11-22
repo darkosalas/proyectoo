@@ -12,17 +12,16 @@ st.markdown(
     """
     <div style='text-align: center; padding: 20px; background: linear-gradient(90deg, #0077b6, #00b4d8);
                 color: white; border-radius: 15px; margin-bottom: 30px;'>
-        <h1 style='margin: 0; font-size: 48px;'>💧 Aquasens</h1>
+        <h1 style='margin: 0; font-size: 48px;'>💧 AqueSense</h1>
         <p style='margin: 0; font-size: 20px;'>Monitoreo inteligente de la calidad del agua</p>
     </div>
     """ ,
     unsafe_allow_html=True
 )
 
-st.title("Comprobador de calidad de agua")
+st.title("Analisis de calidad de agua")
 st.markdown(
-    "Ingresa los valores medidos de pH, turbidez (NTU) y arsénico (µg/L). "
-    "La app calcula un índice sencillo de calidad y muestra anuncios y recomendaciones."
+    "Valores medidos de pH, turbidez (NTU) y arsénico (µg/L). "
 )
 
 REFERENCE = {
