@@ -5,7 +5,7 @@ import streamlit as st
 import numpy as np
 from datetime import datetime
 
-st.set_page_config(page_title="Aquasens - Calidad de Agua", layout="centered")
+st.set_page_config(page_title="AqueSense - Calidad de Agua", layout="centered")
 
 # --- Encabezado corporativo ---
 st.markdown(
